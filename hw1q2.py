@@ -32,7 +32,7 @@ S = 1000
 T = int(4160)
 
 rand_gen = clrand.PhiloxGenerator(ctx)
-ran = rand_gen.normal(queue, (n_runs*T), np.float32, mu=3, sigma=1)
+ran = rand_gen.normal(queue, (T*n_runs), np.float32, mu=3, sigma=1)
 
 z_mat = np.zeros((T, S))
 z_mat[0, :] = z_0
