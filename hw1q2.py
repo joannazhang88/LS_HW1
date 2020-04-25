@@ -35,7 +35,7 @@ z_mat = np.zeros((T, S))
 z_mat[0, :] = z_0
 
 rand_gen = clrand.PhiloxGenerator(ctx)
-ran = rand_gen.normal(queue, (T*nruns), np.float32, mu=3, sigma=1)
+ran = rand_gen.normal(queue, (T*n_runs), np.float32, mu=3, sigma=1)
 
 for s_ind in range(2): 
     z_tm1 = z_0
