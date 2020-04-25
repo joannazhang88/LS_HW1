@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/13aUhp5r7I9TYp6zdOGjhGyGN9QoclutU
 """
 
-! pip install pyopencl mako
+
 
 import numpy as np
 import pyopencl as cl
@@ -22,7 +22,7 @@ ctx = cl.create_some_context()
 queue = cl.CommandQueue(ctx)
 t0 = time.time()
 
-# Commented out IPython magic to ensure Python compatibility.
+
 n_runs = 1000
 np.random.seed(25)
 rho = 0.5 
