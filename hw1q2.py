@@ -42,7 +42,7 @@ for s_ind in range(S):
     for t_ind in range(T):
         e_t = ran[t_ind]
         z_t = rho * z_tm1 + (1 - rho) * 3 + e_t 
-        z_mat[t_ind, s_ind] = numpy.asscalar(z_t)
+        z_mat[t_ind, s_ind] = np.asscalar(z_t)
         z_tm1 = z_t
 average_finish = np.mean(z_mat[-1])
 print(average_finish)
