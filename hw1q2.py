@@ -39,13 +39,15 @@ for s_ind in range(2):
     rand_gen = clrand.PhiloxGenerator(ctx)
     ran = rand_gen.normal(queue, (T), np.float32, mu=3, sigma=1)
     z_tm1 = z_0
-    for t_ind in range(T):
+    for t_ind in range(2):
         e_t = ran[t_ind]
         z_t = rho * z_tm1 + (1 - rho) * 3 + e_t 
-        z_mat[t_ind, s_ind] = z_t
-        z_tm1 = z_t
-average_finish = np.mean(z_mat[-1])
-print(average_finish)
+        #z_mat[t_ind, s_ind] = z_t
+        #z_tm1 = z_t
+        print(e_t)
+        print(z_t)
+#average_finish = np.mean(z_mat[-1])
+#print(average_finish)
 
 final_time = time.time()
 time_elapsed = final_time - t0
