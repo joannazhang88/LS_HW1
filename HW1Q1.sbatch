@@ -9,7 +9,7 @@
 module load mpi4py/3.0.1a0_py3
 
 
-mpirun -1000 1 python ./HW1Q1.py > ./lifetime.out
+mpirun -n 1000 python ./HW1Q1.py > ./lifetime.out
 
 
 wait
