@@ -31,7 +31,7 @@ z_0 = 3
 S = 1000
 T = int(4160)
 
-z_mat = np.zeros((T, S))
+z_mat = np.zeros((T, S), dtype=np.float32)
 z_mat[0, :] = z_0
 
 rand_gen = clrand.PhiloxGenerator(ctx)
@@ -44,6 +44,24 @@ for s_ind in range(2):
         z_t = rho * z_tm1 + (1 - rho) * 3 + e_t
         z_mat[t_ind, s_ind] = z_t
         z_tm1 = z_t
+        
+#seg_boundaries = [1] + [0]*(T-1)
+#seg_boundaries = np.array(seg_boundaries, dtype=np.uint8)
+#seg_boundary_flags = np.tile(seg_boundaries, int(n_runs))
+#seg_boundary_flags = cl_array.to_device(queue, seg_boundary_flags)
+
+#prefix_sum = GenericScanKernel(ctx, np.float32,
+#                arguments="__global float *ary, __global char *segflags, "
+#                    "__global float *out",
+#                input_expr="ary[i]0.5+(0.5*3)",
+#                scan_expr="across_seg_boundary ? b : (a+b)", neutral="0",
+#                is_segment_start_expr="segflags[i]",
+#                output_statement="out[i] = item + 100",
+#                options=[])
+
+
+
+
 
 average_finish = np.mean(z_mat[-1])
 print(average_finish)
