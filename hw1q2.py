@@ -35,17 +35,17 @@ z_mat = np.zeros((T, S))
 z_mat[0, :] = z_0
 
 
-for s_ind in range(S): 
+for s_ind in range(2): 
     rand_gen = clrand.PhiloxGenerator(ctx)
     ran = rand_gen.normal(queue, (T), np.float32, mu=3, sigma=1)
-    z_tm1 = z_0
-    for t_ind in range(T):
-        e_t = ran[t_ind]
-        z_t = rho * z_tm1 + (1 - rho) * 3 + e_t 
-        z_mat[t_ind, s_ind] = np.asscalar(z_t)
-        z_tm1 = z_t
-average_finish = np.mean(z_mat[-1])
-print(average_finish)
+    #z_tm1 = z_0
+    #for t_ind in range(T):
+    #    e_t = ran[t_ind]
+     #   z_t = rho * z_tm1 + (1 - rho) * 3 + e_t 
+      #  z_mat[t_ind, s_ind] = np.asscalar(z_t)
+      #  z_tm1 = z_t
+#average_finish = np.mean(z_mat[-1])
+print(ran)
 
 final_time = time.time()
 time_elapsed = final_time - t0
