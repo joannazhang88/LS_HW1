@@ -34,13 +34,16 @@ T = int(4160)
 z_mat = np.zeros((T, S))
 z_mat[0, :] = z_0
 
+rand_gen = clrand.PhiloxGenerator(ctx)
+ran = rand_gen.normal(queue, (T*nruns), np.float32, mu=3, sigma=1)
+
 for s_ind in range(2): 
-    rand_gen = clrand.PhiloxGenerator(ctx)
-    ran = np.array(rand_gen.normal(queue, (T), np.float32, mu=3, sigma=1))
     z_tm1 = z_0
     for t_ind in range(2):
-        z_mat[t_ind, s_ind] = 0.5 * z_tm1 + (1 - 0.5) * 3 + ran[t_ind] 
-        z_tm1 = 0.5 * z_tm1 + (1 - 0.5) * 3 + ran[t_ind] 
+        e_t = ran[s_ind*T+t_ind]
+        z_t = rho * z_tm1 + (1 - rho) * mu + e_t
+        z_mat[t_ind, s_ind] = z_t
+        z_tm1 = z_t
 
 average_finish = np.mean(z_mat[-1])
 print(average_finish)
