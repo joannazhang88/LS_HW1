@@ -52,4 +52,4 @@ print(average_finish)
 final_time = time.time()
 time_elapsed = final_time - t0
 print("Simulated %d Random Walks in: %f seconds"
-#                 % (n_runs, time_elapsed))
+                % (n_runs, time_elapsed))
