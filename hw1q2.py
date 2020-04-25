@@ -41,7 +41,7 @@ for s_ind in range(S):
     z_tm1 = z_0
     for t_ind in range(T):
         e_t = ran[t_ind]
-        z_t = rho * z_tm1 + (1 - rho) * mu + e_t 
+        z_t = rho * z_tm1 + (1 - rho) * 3 + e_t 
         z_mat[t_ind, s_ind] = z_t
         z_tm1 = z_t
 average_finish = np.mean(z_mat[-1])
