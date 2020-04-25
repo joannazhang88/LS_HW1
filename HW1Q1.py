@@ -52,7 +52,6 @@ for s_ind in range(N):
 
 #simulations = None
 if rank == 0:
-    simulations = np.empty([4160,N*size], dtype='float')
     comm.Gather(z_mat, root=0)
 
 
