@@ -50,10 +50,10 @@ for s_ind in range(N):
 # In[6]:
 
 
-simulations = None
+#simulations = None
 if rank == 0:
     simulations = np.empty([4160,N*size], dtype='float')
-    comm.Gather(sendbuf = z_mat, recvbuf = simulations, root=0)
+    comm.Gather(z_mat, root=0)
 
 
 # In[ ]:
