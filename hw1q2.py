@@ -31,17 +31,16 @@ z_0 = 3
 S = 1000
 T = int(4160)
 
-rand_gen = clrand.PhiloxGenerator(ctx)
-ran = rand_gen.normal(queue, (T*n_runs), np.float32, mu=3, sigma=1)
-
 z_mat = np.zeros((T, S))
 z_mat[0, :] = z_0
 
 
 for s_ind in range(S): 
+    rand_gen = clrand.PhiloxGenerator(ctx)
+    ran = rand_gen.normal(queue, (T), np.float32, mu=3, sigma=1)
     z_tm1 = z_0
     for t_ind in range(T):
-        e_t = ran[t_ind, s_ind]
+        e_t = ran[t_ind]
         z_t = rho * z_tm1 + (1 - rho) * mu + e_t 
         z_mat[t_ind, s_ind] = z_t
         z_tm1 = z_t
