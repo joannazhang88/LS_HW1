@@ -26,14 +26,13 @@ t0 = time.time()
 n_runs = 1000
 np.random.seed(25)
 rho = 0.5 
-mu = 3.0 
 sigma = 1.0 
-z_0 = mu
+z_0 = 3
 S = 1000
 T = int(4160)
 
 rand_gen = clrand.PhiloxGenerator(ctx)
-ran = rand_gen.fill_normal(queue, (n_runs*T), np.float32, mu=mu, sigma=sigma)
+ran = rand_gen.normal(queue, (n_runs*T), np.float32, mu=3, sigma=1)
 
 z_mat = np.zeros((T, N))
 z_mat[0, :] = z_0
