@@ -51,11 +51,10 @@ def sim_lifetime():
             z_tm1 = z_t
 
     # gather all simulations
-    z_all = None
-    if rank == 0:
-        z_all = np.empty([S, T], dtype='float')
-        comm.Gather(sendbuf = z_mat, recvbuf = z_all, root=0)
-
+   # z_all = None
+   # if rank == 0:
+   #     z_all = np.empty([S, T], dtype='float')
+    #comm.Gather(sendbuf = z_mat, recvbuf = z_all, root=0)
     if rank == 0:
         time_elapsed = time.time() - t0
         print("Simulated 1000 lifetimes in: %f seconds on %d MPI processes"
