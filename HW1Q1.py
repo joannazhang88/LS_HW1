@@ -40,7 +40,7 @@ def sim_lifetime():
     
 
     #N = eps_mat.shape[0]
-    N = int(n_runs/size)
+    N = int(S/size)
     eps_mat = sts.norm.rvs(loc=0, scale=sigma, size=(N, T))
     z_mat = np.zeros((N, T))
     z_mat[0, :] = z_0
