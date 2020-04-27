@@ -32,13 +32,16 @@ def sim_lifetime():
     np.random.seed(25)
 
     # scatter to processors
-    if rank == 0:
-        eps_mat = sts.norm.rvs(loc=0, scale=sigma, size=(S, T))
+    #if rank == 0:
+    #    eps_mat = sts.norm.rvs(loc=0, scale=sigma, size=(S, T))
     #else:
         #eps_mat = None
-    eps_mat = comm.scatter(eps_mat, root=0)
+   # eps_mat = comm.scatter(eps_mat, root=0)
+    
 
-    N = eps_mat.shape[0]
+    #N = eps_mat.shape[0]
+    N = int(n_runs/size)
+    eps_mat = sts.norm.rvs(loc=0, scale=sigma, size=(N, T))
     z_mat = np.zeros((N, T))
     z_mat[0, :] = z_0
 
