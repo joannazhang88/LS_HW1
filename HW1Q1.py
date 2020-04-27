@@ -56,9 +56,9 @@ def sim_lifetime():
    #  gather all simulations
     z_all = None
     if rank == 0:
-        z_all = np.empty([S, T], dtype='float')
-    #comm.Gather(sendbuf = z_mat, recvbuf = z_all, root=0)
-    comm.gather(z_mat, root = 0)
+        z_all = np.empty([T, S], dtype='float')
+    comm.Gather(sendbuf = z_mat, recvbuf = z_all, root=0)
+    #comm.gather(z_mat, root = 0)
     
     if rank == 0:
         time_elapsed = time.time() - t0
