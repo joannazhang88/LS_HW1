@@ -34,8 +34,8 @@ def sim_lifetime():
     # scatter to processors
     if rank == 0:
         eps_mat = sts.norm.rvs(loc=0, scale=sigma, size=(S, T))
-    else:
-        eps_mat = None
+    #else:
+        #eps_mat = None
     eps_mat = comm.scatter(eps_mat, root=0)
 
     N = eps_mat.shape[0]
