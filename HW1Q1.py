@@ -9,11 +9,6 @@ import time
 import scipy.stats as sts
 
 
-comm = MPI.COMM_WORLD
-rank = comm.Get_rank()
-size = comm.Get_size()
-
-
 def sim_lifetime():
     
     comm = MPI.COMM_WORLD
