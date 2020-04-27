@@ -58,7 +58,8 @@ def sim_lifetime():
 
     if rank == 0:
         time_elapsed = time.time() - t0
-        print(time_elapsed)
+        print("Simulated 1000 lifetimes in: %f seconds on %d MPI processes"
+                % (time_elapsed, size))
         return time_elapsed
 
     return
