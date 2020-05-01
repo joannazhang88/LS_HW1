@@ -39,11 +39,14 @@ def gs_rho(rho):
     return np.mean(neg_indx_all)
 
 def main():
-  rhos = np.linspace(-0.95, 0.95, num=20)
-  sim_avg = np.zeros(20)
+  t0 = time.time()
+  rhos = np.linspace(-0.95, 0.95, num=200)
+  sim_avg = np.zeros(200)
   #neg_results = np.zeros([20, S])
   for i in range(len(sim_avg)):
     sim_avg[i] = gs_rho(rhos[i])
   print(sim_avg)
+  time_elapsed = time.time() - t0
+  print(time_elapsed)
 if __name__ == '__main__':
     main()
