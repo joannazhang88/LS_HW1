@@ -12,4 +12,4 @@ module load cuda
 module load mpi4py/3.0.1a0_py3
 
 
-python ./hw1q3b.py> ./q3b.out.out
+python ./hw1q3b.py> ./q3b.out
