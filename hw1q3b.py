@@ -49,7 +49,10 @@ for rho in rhos:
   fst_neg_indx = np.empty(S)
 
   for i in range(S):
-    fst_neg_indx[i] = np.where(z_mat.transpose()[i,:]<0)[0][0]
+    if (z_mat.transpose()[i,:]>0).all:
+      fst_neg_indx[i] = float("NAN")
+    else:
+      fst_neg_indx[i] = np.where(z_mat.transpose()[i,:]<0)[0][0]
   sum_result = cl_array.empty(queue, shape = 1, dtype = float)
       
   prefix_sum(cl_array.to_device(queue, fst_neg_indx), seg_boundary_flags, sum_result)
