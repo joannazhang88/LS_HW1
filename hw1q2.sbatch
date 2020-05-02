@@ -12,4 +12,4 @@ module load cuda
 module load mpi4py/3.0.1a0_py3
 
 #python ./print_gpu_info.py
-python ./hw1q2.py> ./gpt_lt.out
+python ./hw1q2.py> ./gpu_lt.out
