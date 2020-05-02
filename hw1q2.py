@@ -44,8 +44,6 @@ r_walks_all = (dev_result.get()
                          .transpose()
                          )
 
-average_finish = np.mean(z_mat[-1])
-#print(average_finish)
 final_time = time.time()
 time_elapsed = final_time - t0
 print("1000 simultaions in: %f seconds"
