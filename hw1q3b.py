@@ -50,3 +50,7 @@ for rho in rhos:
 print(average)
 time_elapsed = time.time() - t0
 print(time_elapsed)
+plt.plot(rhos, average)
+plt.xlabel('Rho')
+plt.ylabel('Average number of periods to negative health index OpenCL')
+plt.savefig("q3a.png")
