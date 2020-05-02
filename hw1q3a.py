@@ -2,6 +2,7 @@ from mpi4py import MPI
 import numpy as np
 import time
 import scipy.stats as sts
+import matplotlib.pyplot as plt
 
 def gs_rho(rho):
   comm = MPI.COMM_WORLD
@@ -49,5 +50,10 @@ def main():
   print(sim_avg)
   time_elapsed = time.time() - t0
   print(time_elapsed)
+  
+  plt.plot(rhos, sim_avg)
+  plt.xlabel('Rho')
+  plt.ylabel('Average number of periods to negative health index')
+  plt.savefig("q3a.png")
 if __name__ == '__main__':
     main()
