@@ -29,6 +29,7 @@ def gs_rho(rho):
             z_tm1 = z_t
             if z_tm1<0:
               negative[s_ind] = t_ind
+              break
   
   #neg_indx_all = None
   #if rank == 0:
