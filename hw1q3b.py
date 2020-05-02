@@ -16,7 +16,7 @@ t0 = time.time()
 mu = 3
 S = 1000
 T = 4160
-rhos = np.linspace(-0.95, 0.95, num=5)
+rhos = np.linspace(-0.95, 0.95, num=200)
 eps_mat = sts.norm.rvs(loc=0, scale=1, size=(S*T)).astype(np.float32)
 initial = np.zeros(S).astype(np.float32)+3
 eps_mat = cl.array.to_device(queue, eps_mat)
@@ -50,7 +50,7 @@ for rho in rhos:
 
   for i in range(S):
     if (z_mat.transpose()[i,:]>0).all:
-      fst_neg_indx[i] = float("NAN")
+      fst_neg_indx[i] = T
     else:
       fst_neg_indx[i] = np.where(z_mat.transpose()[i,:]<0)[0][0]
   sum_result = cl_array.empty(queue, shape = 1, dtype = float)
