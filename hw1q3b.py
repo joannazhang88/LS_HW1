@@ -46,12 +46,12 @@ for rho in rhos:
     mknl(output[S*(k-1):S*k], eps_mat[S*k:S*k+1],rho, mu, output[S*k:S*(k+1)])
 
   z_mat = output.get().reshape(T,S)
-  fst_neg_indx = np.empty(S)
+  fst_neg_indx = np.zero(S)
 
   for i in range(S):
-    if (z_mat.transpose()[i,:]>0).all:
-      fst_neg_indx[i] = T
-    else:
+     if np.all(z_mat.transpose()[i,:]>=0):
+       pass
+     else:
       fst_neg_indx[i] = np.where(z_mat.transpose()[i,:]<0)[0][0]
   sum_result = cl_array.empty(queue, shape = 1, dtype = float)
       
