@@ -25,17 +25,7 @@ mknl = ElementwiseKernel(ctx,
       "float *a, float *b, float rho, float mu, float *rslt",
       "rslt[i] = rho * a[i] +(1-rho)*mu+b[i]"
       )
-seg_boundaries = [1] + [0] * (S - 1) 
-seg_boundaries = np.array(seg_boundaries, dtype=np.uint8)
-seg_boundary_flags = cl_array.to_device(queue, seg_boundaries)
-prefix_sum = GenericScanKernel(ctx, np.float32,
-               arguments="__global float *ary, __global char *segflags,"
-                   "__global float *out",
-               input_expr="ary[i]",
-               scan_expr="across_seg_boundary ? b : (a+b)", neutral="0",
-               is_segment_start_expr="segflags[i]",
-               output_statement="out[i] = item",
-               options=[])
+
 
 average = np.empty(0)
 
@@ -53,10 +43,8 @@ for rho in rhos:
        pass
      else:
       fst_neg_indx[i] = np.where(z_mat.transpose()[i,:]<0)[0][0]
-  sum_result = cl_array.empty(queue, shape = 1, dtype = float)
-      
-  prefix_sum(cl_array.to_device(queue, fst_neg_indx), seg_boundary_flags, sum_result)
 
+  sum_result = np.sum(fst_neg_indx)
   average = np.append(average, (sum_result.get()/S).astype(float))
       
 print(average)
