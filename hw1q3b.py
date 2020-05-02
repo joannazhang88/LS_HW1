@@ -45,7 +45,7 @@ for rho in rhos:
       fst_neg_indx[i] = np.where(z_mat.transpose()[i,:]<0)[0][0]
 
   sum_result = np.sum(fst_neg_indx)
-  average = np.append(average, (sum_result.get()/S).astype(float))
+  average = np.append(average, (sum_result/S).astype(float))
       
 print(average)
 time_elapsed = time.time() - t0
