@@ -36,7 +36,7 @@ for rho in rhos:
     mknl(output[S*(k-1):S*k], eps_mat[S*k:S*k+1],rho, mu, output[S*k:S*(k+1)])
 
   z_mat = output.get().reshape(T,S)
-  fst_neg_indx = np.zero(S)
+  fst_neg_indx = np.zeros(S)
 
   for i in range(S):
      if np.all(z_mat.transpose()[i,:]>=0):
