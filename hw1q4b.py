@@ -48,7 +48,7 @@ def main():
   rand_gen = clrand.PhiloxGenerator(ctx)
   ran = rand_gen.normal(queue, (S*T), np.float32, mu=0, sigma=1)
   print(optimize.minimize(get_neg_indx,x0 = 0.1,args = ran, method = 'L-BFGS-B',
-                         bounds = ((-0.95,0.95),),options = {'eps' : 0.005}))
+                         bounds = ((-0.95,0.95),),options = {'eps' : 0.001}))
   time_elapsed = time.time() - t0
   print("Time used: %d"% (time_elapsed))
 
