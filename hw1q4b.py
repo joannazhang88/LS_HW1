@@ -10,6 +10,9 @@ import scipy.stats as sts
 from pyopencl.elementwise import ElementwiseKernel
 from scipy import optimize
 
+ctx = cl.create_some_context()
+queue = cl.CommandQueue(ctx)
+
 def get_neg_indx(rho, ran):
   rho = 0.5
   mu = 3
